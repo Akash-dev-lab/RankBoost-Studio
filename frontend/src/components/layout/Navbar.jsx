@@ -8,12 +8,40 @@ export function Navbar() {
   const { theme, toggleTheme } = useTheme();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
 
-  const navLinks = [
+  const navLinks = React.useMemo(() => [
     { name: 'Home', path: '/' },
     { name: 'Services', path: '/template/services' },
     { name: 'Portfolio', path: '/template/portfolio' },
     { name: 'About', path: '/template/about' },
-  ];
+  ], []);
+
+  const toggleMobileMenu = React.useCallback(() => {
+    setIsMobileMenuOpen((prev) => !prev);
+  }, []);
+
+  const closeMobileMenu = React.useCallback(() => {
+    setIsMobileMenuOpen(false);
+  }, []);
+
+  const desktopNavLinkClass = React.useCallback(
+    ({ isActive }) =>
+      `text-sm font-medium transition-colors hover:text-indigo-600 dark:hover:text-indigo-400 ${
+        isActive
+          ? 'text-indigo-600 dark:text-indigo-400'
+          : 'text-gray-600 dark:text-gray-300'
+      }`,
+    []
+  );
+
+  const mobileNavLinkClass = React.useCallback(
+    ({ isActive }) =>
+      `text-base font-medium transition-colors hover:text-indigo-600 dark:hover:text-indigo-400 ${
+        isActive
+          ? 'text-indigo-600 dark:text-indigo-400'
+          : 'text-gray-600 dark:text-gray-300'
+      }`,
+    []
+  );
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-gray-200 bg-white/80 backdrop-blur-md dark:border-gray-800 dark:bg-gray-950/80 transition-colors duration-300">
@@ -36,13 +64,7 @@ export function Navbar() {
               <NavLink
                 key={link.name}
                 to={link.path}
-                className={({ isActive }) =>
-                  `text-sm font-medium transition-colors hover:text-indigo-600 dark:hover:text-indigo-400 ${
-                    isActive
-                      ? 'text-indigo-600 dark:text-indigo-400'
-                      : 'text-gray-600 dark:text-gray-300'
-                  }`
-                }
+                className={desktopNavLinkClass}
               >
                 {link.name}
               </NavLink>
@@ -64,7 +86,7 @@ export function Navbar() {
             {/* Mobile menu button */}
             <button
               className="md:hidden p-2 text-gray-500 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-800 rounded-lg transition-colors"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              onClick={toggleMobileMenu}
             >
               {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -80,14 +102,8 @@ export function Navbar() {
               <NavLink
                 key={link.name}
                 to={link.path}
-                onClick={() => setIsMobileMenuOpen(false)}
-                className={({ isActive }) =>
-                  `text-base font-medium transition-colors hover:text-indigo-600 dark:hover:text-indigo-400 ${
-                    isActive
-                      ? 'text-indigo-600 dark:text-indigo-400'
-                      : 'text-gray-600 dark:text-gray-300'
-                  }`
-                }
+                onClick={closeMobileMenu}
+                className={mobileNavLinkClass}
               >
                 {link.name}
               </NavLink>

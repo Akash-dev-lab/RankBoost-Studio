@@ -42,9 +42,9 @@ export function Services() {
           {services.map((service, index) => {
             const Icon = service.icon;
             return (
-              <div 
-                key={index} 
-                className="group p-8 bg-white dark:bg-gray-800 rounded-3xl shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700 hover:-translate-y-1"
+              <div
+                key={index}
+                className="group p-8 bg-white dark:bg-gray-800 rounded-3xl shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100 dark:border-gray-700 hover:scale-[1.02]"
               >
                 <div className="w-12 h-12 rounded-2xl bg-indigo-50 dark:bg-indigo-900/30 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                   <Icon className="w-6 h-6 text-indigo-600 dark:text-indigo-400" />

@@ -1,5 +1,14 @@
 @import "tailwindcss";
 
+* {
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
 @custom-variant dark (&:is(.dark *));
 
 @theme {
@@ -17,7 +26,9 @@
 }
 
 @layer base {
-  html, body {
+
+  html,
+  body {
     @apply antialiased bg-gray-50 text-gray-900 dark:bg-gray-950 dark:text-gray-50 transition-colors duration-300;
   }
 }

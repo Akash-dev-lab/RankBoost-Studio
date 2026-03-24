@@ -7,8 +7,8 @@ export function CTA() {
     <section className="py-24 relative overflow-hidden bg-white dark:bg-gray-950 transition-colors duration-300">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="bg-indigo-600 dark:bg-indigo-900 rounded-3xl overflow-hidden relative shadow-2xl">
-          <div className="absolute inset-0 bg-gradient-to-br from-indigo-500 to-purple-700 dark:from-indigo-800 dark:to-purple-900 opacity-90" />
-          
+          <div className="absolute inset-0 bg-linear-to-br from-indigo-500 to-purple-700 dark:from-indigo-800 dark:to-purple-900 opacity-90" />
+
           <div className="relative p-12 sm:p-20 text-center text-white">
             <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-6">
               Ready to transform your digital presence?

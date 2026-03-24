@@ -9,7 +9,8 @@ const TemplatePage = lazy(() => import('./pages/Template'));
 // Loading fallback component
 const PageLoader = () => (
   <div className="min-h-[50vh] flex items-center justify-center">
-    <div className="w-8 h-8 rounded-full border-4 border-indigo-200 border-t-indigo-600 animate-spin"></div>
+    {/* <div className="w-8 h-8 rounded-full border-4 border-indigo-200 border-t-indigo-600 animate-spin"></div> */}
+    <p>Loading...</p>
   </div>
 );
 

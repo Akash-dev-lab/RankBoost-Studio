@@ -15,7 +15,7 @@ export function TrustBar() {
         {trustItems.map((item, index) => {
           const Icon = item.icon;
           return (
-            <div key={index} className="flex items-center gap-2.5 bg-white/40 dark:bg-gray-900/30 px-3 py-1.5 rounded-full shadow-sm ring-1 ring-gray-900/5 dark:ring-white/10 backdrop-blur-sm">
+            <div key={index} className="flex items-center gap-2.5 dark:bg-gray-900/30 px-3 py-1.5 rounded-full shadow-sm ring-1 ring-gray-900/5 dark:ring-white/10">
               <div className="flex h-6 w-6 items-center justify-center rounded-full bg-indigo-100 dark:bg-indigo-900/60 text-indigo-600 dark:text-indigo-300">
                 <Icon className="w-3.5 h-3.5" />
               </div>
