@@ -5,15 +5,15 @@ export function Hero() {
   return (
     <section className="relative bg-white dark:bg-gray-950 pt-24 pb-20 sm:pt-32 sm:pb-24 lg:pb-32 transition-colors duration-300">
       {/* Minimal background texture (no heavy gradients or blur) */}
-      <div 
-        className="absolute inset-0 -z-10 h-full w-full bg-white dark:bg-gray-950 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] dark:bg-[radial-gradient(#1f2937_1px,transparent_1px)] bg-size-[16px_16px] opacity-70" 
-        aria-hidden="true" 
+      <div
+        className="absolute inset-0 -z-10 h-full w-full bg-white dark:bg-gray-950 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] dark:bg-[radial-gradient(#1f2937_1px,transparent_1px)] bg-size-[16px_16px] opacity-70"
+        aria-hidden="true"
       />
-      
+
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
         <div className="mx-auto max-w-4xl">
           <h1 className="text-4xl font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-5xl lg:text-7xl mb-6 leading-tight">
-            We Build Websites That Bring You Customers
+            We Build Websites That Bring You <span className="text-transparent bg-clip-text bg-linear-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400">Customers</span>
           </h1>
 
           <p className="mt-6 text-lg sm:text-xl leading-relaxed text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-10">
@@ -21,9 +21,9 @@ export function Hero() {
           </p>
 
           <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Button 
-              size="lg" 
-              className="w-full sm:w-auto px-8 py-4 text-base font-semibold rounded-full" 
+            <Button
+              size="lg"
+              className="w-full sm:w-auto px-8 py-4 text-base font-semibold rounded-full"
               aria-label="Get Free Demo"
               onClick={() => window.dispatchEvent(new CustomEvent('open-demo-modal'))}
             >

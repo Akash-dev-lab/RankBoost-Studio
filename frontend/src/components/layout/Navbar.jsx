@@ -1,5 +1,5 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { NavLink, useLocation } from 'react-router-dom';
 import { Moon, Sun, Menu, X } from 'lucide-react';
 import { useTheme } from '../../hooks/useTheme';
 import { Button } from '../ui/Button';
@@ -7,12 +7,12 @@ import { Button } from '../ui/Button';
 export function Navbar() {
   const { theme, toggleTheme } = useTheme();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
+  const location = useLocation();
 
   const navLinks = React.useMemo(() => [
     { name: 'Home', path: '/' },
-    { name: 'Services', path: '/template/services' },
-    { name: 'Portfolio', path: '/template/portfolio' },
-    { name: 'About', path: '/template/about' },
+    { name: 'Templates', path: '/#templates' },
+    { name: 'Contact', path: '/contact' },
   ], []);
 
   const toggleMobileMenu = React.useCallback(() => {
@@ -23,24 +23,60 @@ export function Navbar() {
     setIsMobileMenuOpen(false);
   }, []);
 
+  // Global smooth scroll effect when routing natively
+  useEffect(() => {
+    if (location.hash) {
+      const element = document.getElementById(location.hash.substring(1));
+      if (element) {
+        setTimeout(() => element.scrollIntoView({ behavior: 'smooth' }), 100);
+      }
+    } else if (location.pathname === '/') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }, [location.pathname, location.hash]); // Listen to hash and pathname changes
+
+  const handleNavClick = (e, path) => {
+    closeMobileMenu();
+
+    const [targetPathname, hash] = path.split('#');
+    const targetPath = targetPathname || '/';
+
+    // If already on the page, manually take over the scroll logic
+    if (location.pathname === targetPath) {
+      e.preventDefault();
+      if (hash) {
+        const element = document.getElementById(hash);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+          window.history.replaceState(null, '', path);
+        }
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        window.history.replaceState(null, '', path);
+      }
+    }
+  };
+
+  const currentPath = `${location.pathname}${location.hash}`;
+
   const desktopNavLinkClass = React.useCallback(
-    ({ isActive }) =>
+    (path) =>
       `text-sm font-medium transition-colors hover:text-indigo-600 dark:hover:text-indigo-400 ${
-        isActive
+        (currentPath === path || (path === '/' && currentPath === ''))
           ? 'text-indigo-600 dark:text-indigo-400'
           : 'text-gray-600 dark:text-gray-300'
       }`,
-    []
+    [currentPath]
   );
 
   const mobileNavLinkClass = React.useCallback(
-    ({ isActive }) =>
+    (path) =>
       `text-base font-medium transition-colors hover:text-indigo-600 dark:hover:text-indigo-400 ${
-        isActive
+        (currentPath === path || (path === '/' && currentPath === ''))
           ? 'text-indigo-600 dark:text-indigo-400'
           : 'text-gray-600 dark:text-gray-300'
       }`,
-    []
+    [currentPath]
   );
 
   return (
@@ -48,7 +84,7 @@ export function Navbar() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           <div className="flex items-center gap-2">
-            <NavLink to="/" className="flex items-center gap-2">
+            <NavLink to="/" onClick={(e) => handleNavClick(e, '/')} className="flex items-center gap-2">
               <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-indigo-600 text-white font-bold text-xl">
                 R
               </div>
@@ -64,7 +100,8 @@ export function Navbar() {
               <NavLink
                 key={link.name}
                 to={link.path}
-                className={desktopNavLinkClass}
+                onClick={(e) => handleNavClick(e, link.path)}
+                className={() => desktopNavLinkClass(link.path)}
               >
                 {link.name}
               </NavLink>
@@ -79,7 +116,11 @@ export function Navbar() {
             >
               {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
             </button>
-            <Button className="hidden md:inline-flex rounded-full shadow-md hover:shadow-lg transition-all" variant="primary">
+            <Button 
+              className="hidden md:inline-flex rounded-full shadow-md hover:shadow-lg transition-all" 
+              variant="primary"
+              onClick={() => window.dispatchEvent(new CustomEvent('open-demo-modal'))}
+            >
               Get Free Demo
             </Button>
             
@@ -102,13 +143,20 @@ export function Navbar() {
               <NavLink
                 key={link.name}
                 to={link.path}
-                onClick={closeMobileMenu}
-                className={mobileNavLinkClass}
+                onClick={(e) => handleNavClick(e, link.path)}
+                className={() => mobileNavLinkClass(link.path)}
               >
                 {link.name}
               </NavLink>
             ))}
-            <Button className="w-full mt-4 rounded-full shadow-md hover:shadow-lg transition-all" variant="primary">
+            <Button 
+              className="w-full mt-4 rounded-full shadow-md hover:shadow-lg transition-all" 
+              variant="primary"
+              onClick={() => {
+                closeMobileMenu();
+                window.dispatchEvent(new CustomEvent('open-demo-modal'));
+              }}
+            >
               Get Free Demo
             </Button>
           </nav>
