@@ -5,6 +5,7 @@ import { Layout } from './components/layout/Layout';
 
 const Home = lazy(() => import('./pages/Home'));
 const TemplatePage = lazy(() => import('./pages/Template'));
+const ContactPage = lazy(() => import('./pages/Contact'));
 
 // Loading fallback component
 const PageLoader = () => (
@@ -23,6 +24,7 @@ const App = () => {
             <Route path="/" element={<Layout />}>
               <Route index element={<Home />} />
               <Route path="template/:type" element={<TemplatePage />} />
+              <Route path="contact" element={<ContactPage />} />
               {/* Fallback route */}
               <Route path="*" element={<TemplatePage />} />
             </Route>
