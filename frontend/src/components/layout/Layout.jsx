@@ -3,6 +3,7 @@ import { Outlet } from 'react-router-dom';
 import { Navbar } from './Navbar';
 import { Footer } from './Footer';
 import { WhatsAppButton } from '../ui/WhatsAppButton';
+import { DemoModal } from '../ui/DemoModal';
 
 export function Layout() {
   return (
@@ -13,6 +14,7 @@ export function Layout() {
       </main>
       <Footer />
       <WhatsAppButton />
+      <DemoModal />
     </div>
   );
 }

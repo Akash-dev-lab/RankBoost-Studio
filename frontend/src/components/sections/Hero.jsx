@@ -21,7 +21,12 @@ export function Hero() {
           </p>
 
           <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Button size="lg" className="w-full sm:w-auto px-8 py-4 text-base font-semibold rounded-full" aria-label="Get Free Demo">
+            <Button 
+              size="lg" 
+              className="w-full sm:w-auto px-8 py-4 text-base font-semibold rounded-full" 
+              aria-label="Get Free Demo"
+              onClick={() => window.dispatchEvent(new CustomEvent('open-demo-modal'))}
+            >
               Get Free Demo
               <ArrowRight className="ml-2 w-5 h-5 shrink-0" aria-hidden="true" />
             </Button>

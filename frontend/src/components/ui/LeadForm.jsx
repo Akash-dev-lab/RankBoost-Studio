@@ -15,7 +15,7 @@ const BUSINESS_TYPES = [
   "Other"
 ];
 
-export function LeadForm({ className = "" }) {
+export function LeadForm({ className = "", onSuccess }) {
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -56,11 +56,15 @@ export function LeadForm({ className = "" }) {
       
       const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(waText)}`;
       
+      if (onSuccess) {
+        onSuccess();
+      }
+
       // Small artificial delay for visual feedback
       setTimeout(() => {
         setIsSubmitting(false);
         window.open(whatsappUrl, '_blank');
-      }, 600);
+      }, onSuccess ? 1500 : 600); // Wait longer if showing success UI
     }
   };
 
