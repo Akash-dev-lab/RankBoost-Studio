@@ -4,6 +4,8 @@ import { ThemeProvider } from './hooks/useTheme';
 import { Layout } from './components/layout/Layout';
 
 const Home = lazy(() => import('./pages/Home'));
+const TemplatesHome = lazy(() => import('./pages/TemplatesHome'));
+const CategoryPage = lazy(() => import('./pages/CategoryPage'));
 const TemplatePage = lazy(() => import('./pages/Template'));
 const ContactPage = lazy(() => import('./pages/Contact'));
 
@@ -23,10 +25,12 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Layout />}>
               <Route index element={<Home />} />
+              <Route path="templates" element={<TemplatesHome />} />
+              <Route path="templates/:category" element={<CategoryPage />} />
               <Route path="template/:type" element={<TemplatePage />} />
               <Route path="contact" element={<ContactPage />} />
               {/* Fallback route */}
-              <Route path="*" element={<TemplatePage />} />
+              <Route path="*" element={<Home />} />
             </Route>
           </Routes>
         </Suspense>

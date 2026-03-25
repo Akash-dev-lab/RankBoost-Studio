@@ -1,29 +1,15 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { ArrowRight, ChevronDown, ChevronUp, ExternalLink } from 'lucide-react';
 
-const templatesData = [
-  {
-    id: 'gym',
-    name: 'Fitness & Gym Power',
-    tag: 'Local Business',
-    image: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=800&auto=format&fit=crop',
-    metrics: { perf: 98, seo: 100, load: '1.2s', mobile: 99, cwv: 'Passed' }
-  },
-  {
-    id: 'salon',
-    name: 'Aesthetic Salon Pro',
-    tag: 'Premium Beauty',
-    image: 'https://images.unsplash.com/photo-1560066984-138dadb4c035?q=80&w=800&auto=format&fit=crop',
-    metrics: { perf: 95, seo: 98, load: '1.5s', mobile: 95, cwv: 'Passed' }
-  },
-  {
-    id: 'clinic',
-    name: 'Medical Trust Care',
-    tag: 'Healthcare',
-    image: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=800&auto=format&fit=crop',
-    metrics: { perf: 99, seo: 100, load: '0.8s', mobile: 100, cwv: 'Passed' }
-  }
-];
+import { templates } from '../../utils/templates';
+
+// For the landing page, we'll show one featured template from each major category
+const featuredTemplates = [
+  templates.find(t => t.category === 'gym'),
+  templates.find(t => t.category === 'salon'),
+  templates.find(t => t.category === 'healthcare')
+].filter(Boolean);
 
 function TemplateCard({ template }) {
   const [showMetrics, setShowMetrics] = useState(false);
@@ -138,6 +124,47 @@ function TemplateCard({ template }) {
   );
 }
 
+function TemplateIntroSection() {
+  const navigate = useNavigate();
+
+  const handleViewCollection = (e) => {
+    e.preventDefault();
+    navigate('/templates');
+    window.scrollTo(0, 0); // Ensure page starts at top
+  };
+
+  return (
+    <div className="text-center max-w-4xl mx-auto mb-20 flex flex-col items-center animate-in fade-in slide-in-from-bottom-8 duration-700">
+      <div className="flex flex-wrap justify-center gap-3 mb-8">
+        <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 text-sm font-bold tracking-wide">
+          <span aria-hidden="true">📈</span> 90+ SEO Score
+        </span>
+        <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 text-sm font-bold tracking-wide">
+          <span aria-hidden="true">⚡</span> Fast Loading &lt;2s
+        </span>
+        <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-300 text-sm font-bold tracking-wide">
+          <span aria-hidden="true">📱</span> Mobile Optimized
+        </span>
+      </div>
+
+      <h2 className="text-4xl font-extrabold tracking-tight text-white mb-6 sm:text-5xl lg:text-5xl leading-tight">
+        20+ Pre-made Templates with <span className="text-transparent bg-clip-text bg-linear-to-r from-indigo-500 to-purple-400">90+ Rank</span>
+      </h2>
+      
+      <p className="text-lg sm:text-xl text-gray-400 font-medium mb-10 max-w-2xl text-center leading-relaxed">
+        Choose from high-performance, SEO-optimized templates designed to rank and convert.
+      </p>
+
+      <button 
+        onClick={handleViewCollection}
+        className="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-white transition-all duration-300 rounded-full bg-linear-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 shadow-[0_0_20px_rgba(79,70,229,0.3)] hover:shadow-[0_0_30px_rgba(79,70,229,0.5)] hover:-translate-y-1 group cursor-pointer"
+      >
+        View Collection <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+      </button>
+    </div>
+  );
+}
+
 export function Templates() {
   return (
     <section className="py-24 bg-[#0B0F1A] transition-colors duration-300 relative overflow-hidden" id="templates">
@@ -148,17 +175,10 @@ export function Templates() {
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-full max-w-4xl h-96 bg-indigo-600/10 rounded-full blur-[120px] pointer-events-none" aria-hidden="true" />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-4xl font-extrabold tracking-tight text-white mb-5 sm:text-5xl">
-            Template + Performance
-          </h2>
-          <p className="text-lg text-gray-400 font-medium">
-            Choose designs backed by real SEO performance data. These templates are optimized for SEO and lightning speed.
-          </p>
-        </div>
+        <TemplateIntroSection />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {templatesData.map((tpl) => (
+        <div id="template-grid-section" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {featuredTemplates.map((tpl) => (
             <TemplateCard key={tpl.id} template={tpl} />
           ))}
         </div>
