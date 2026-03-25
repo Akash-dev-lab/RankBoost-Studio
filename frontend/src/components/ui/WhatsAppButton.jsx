@@ -1,7 +1,7 @@
 import React from 'react';
 
 // Replace string with your actual WhatsApp Number
-const WHATSAPP_NUMBER = "8923101766";
+const WHATSAPP_NUMBER = "+918923101766";
 const MESSAGE = "Hi, I saw your website and I want a demo for my business.";
 
 export function WhatsAppButton() {

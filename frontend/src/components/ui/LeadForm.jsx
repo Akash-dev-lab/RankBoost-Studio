@@ -3,7 +3,7 @@ import { ArrowRight, AlertCircle, Phone } from 'lucide-react';
 import { Button } from './Button';
 
 // Replace with client's actual WhatsApp number
-const WHATSAPP_NUMBER = "8923101766";
+const WHATSAPP_NUMBER = "+918923101766";
 
 const BUSINESS_TYPES = [
   "Gym / Fitness",

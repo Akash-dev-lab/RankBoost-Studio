@@ -25,7 +25,7 @@ export function CTA() {
               <ArrowRight className="ml-2 w-6 h-6 shrink-0" aria-hidden="true" />
             </Button>
             <a
-              href="https://wa.me/8923101766"
+              href="https://wa.me/+918923101766"
               target="_blank"
               rel="noopener noreferrer"
               className="w-full sm:w-auto"
