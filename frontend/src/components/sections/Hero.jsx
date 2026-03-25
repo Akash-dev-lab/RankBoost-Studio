@@ -1,67 +1,56 @@
-import { ArrowRight, Sparkles } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { Button } from '../ui/Button';
-import { TrustBar } from './TrustBar';
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden bg-white dark:bg-gray-950 pt-24 pb-32 sm:pt-32 sm:pb-40 lg:pb-48 transition-colors duration-300">
-      {/* Background gradients */}
-      <div className="absolute inset-x-0 -top-40 -z-10 overflow-hidden sm:-top-80">
-        <div
-          className="relative left-[calc(50%-11rem)] aspect-1155/678 w-144.5 -translate-x-1/2 bg-linear-to-tr from-[#ff80b5] to-[#9089fc] opacity-20 sm:left-[calc(50%-30rem)] sm:w-288.75"
-          style={{
-            clipPath:
-              'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)',
-          }}
-        />
-      </div>
-
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="mx-auto max-w-4xl text-center">
-          <div className="mb-8 flex justify-center">
-            <span className="relative rounded-full px-4 py-1.5 text-sm leading-6 text-gray-600 dark:text-gray-300 ring-1 ring-gray-900/10 dark:ring-white/20 hover:ring-gray-900/20 dark:hover:ring-white/30 transition-all flex items-center gap-2 cursor-pointer bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm">
-              <Sparkles className="w-4 h-4 text-indigo-500" />
-              Announcing our new Web Design service.{' '}
-              <a href="/template/new-service" className="font-semibold text-indigo-600 dark:text-indigo-400">
-                <span className="absolute inset-0" aria-hidden="true" />
-                Read more <span aria-hidden="true">&rarr;</span>
-              </a>
-            </span>
-          </div>
-
-          <h1 className="text-5xl font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-6xl lg:text-7xl mb-8 leading-tight">
-            We Help Local Businesses <span className="text-transparent bg-clip-text bg-linear-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400">Get More Customers</span> Online
+    <section className="relative bg-white dark:bg-gray-950 pt-24 pb-20 sm:pt-32 sm:pb-24 lg:pb-32 transition-colors duration-300">
+      {/* Minimal background texture (no heavy gradients or blur) */}
+      <div 
+        className="absolute inset-0 -z-10 h-full w-full bg-white dark:bg-gray-950 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] dark:bg-[radial-gradient(#1f2937_1px,transparent_1px)] bg-size-[16px_16px] opacity-70" 
+        aria-hidden="true" 
+      />
+      
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+        <div className="mx-auto max-w-4xl">
+          <h1 className="text-4xl font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-5xl lg:text-7xl mb-6 leading-tight">
+            We Build Websites That Bring You Customers
           </h1>
 
-          <p className="mt-6 text-xl leading-8 text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-10">
-            Fast, SEO-optimized websites that bring real leads via Google & WhatsApp.
+          <p className="mt-6 text-lg sm:text-xl leading-relaxed text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-10">
+            High-performance, SEO-optimized websites designed to generate leads from Google and WhatsApp.
           </p>
 
-          <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Button size="lg" className="group rounded-full px-8 py-3.5 shadow-xl hover:shadow-indigo-500/25 transition-all text-base sm:text-lg w-full sm:w-auto">
-              Get Free Website Demo
-              <ArrowRight className="ml-2 w-5 h-5 transition-transform group-hover:translate-x-1" />
+          <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Button size="lg" className="w-full sm:w-auto px-8 py-4 text-base font-semibold rounded-full" aria-label="Get Free Demo">
+              Get Free Demo
+              <ArrowRight className="ml-2 w-5 h-5 shrink-0" aria-hidden="true" />
             </Button>
-            <Button variant="outline" size="lg" className="rounded-full px-8 py-3.5 text-base sm:text-lg w-full sm:w-auto bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm">
-              View Demo
+            <Button variant="outline" size="lg" className="w-full sm:w-auto px-8 py-4 text-base font-semibold rounded-full bg-white dark:bg-gray-950 hover:bg-gray-50 dark:hover:bg-gray-900 transition-colors" aria-label="View Live Demo">
+              View Live Demo
             </Button>
           </div>
 
-          <div className="mt-16 sm:mt-24">
-            <TrustBar />
+          <div className="mt-16 pt-10 border-t border-gray-100 dark:border-gray-900">
+            <ul className="grid grid-cols-2 gap-y-8 gap-x-4 sm:grid-cols-4 justify-center items-center text-sm font-medium text-gray-700 dark:text-gray-300 p-0 m-0 list-none">
+              <li className="flex flex-col items-center gap-3">
+                <span className="text-2xl" aria-hidden="true">⚡</span>
+                <span>Loads under 2s</span>
+              </li>
+              <li className="flex flex-col items-center gap-3">
+                <span className="text-2xl" aria-hidden="true">📈</span>
+                <span>SEO Optimized</span>
+              </li>
+              <li className="flex flex-col items-center gap-3">
+                <span className="text-2xl" aria-hidden="true">📲</span>
+                <span>WhatsApp Leads</span>
+              </li>
+              <li className="flex flex-col items-center gap-3">
+                <span className="text-2xl" aria-hidden="true">💼</span>
+                <span>Built for Local Business</span>
+              </li>
+            </ul>
           </div>
         </div>
-      </div>
-
-      {/* Bottom gradient */}
-      <div className="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 overflow-hidden sm:top-[calc(100%-30rem)]">
-        <div
-          className="relative left-[calc(50%+3rem)] aspect-1155/678 w-144.5 -translate-x-1/2 bg-linear-to-tr from-[#ff80b5] to-[#9089fc] opacity-20 sm:left-[calc(50%+36rem)] sm:w-288.75"
-          style={{
-            clipPath:
-              'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)',
-          }}
-        />
       </div>
     </section>
   );
