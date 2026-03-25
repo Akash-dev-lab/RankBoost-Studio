@@ -3,7 +3,7 @@ import { ArrowRight, AlertCircle, Phone } from 'lucide-react';
 import { Button } from './Button';
 
 // Replace with client's actual WhatsApp number
-const WHATSAPP_NUMBER = "1234567890";
+const WHATSAPP_NUMBER = "8923101766";
 
 const BUSINESS_TYPES = [
   "Gym / Fitness",
@@ -22,7 +22,7 @@ export function LeadForm({ className = "", onSuccess }) {
     businessType: '',
     message: ''
   });
-  
+
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -35,27 +35,27 @@ export function LeadForm({ className = "", onSuccess }) {
       newErrors.phone = "Please enter a valid phone number";
     }
     if (!formData.businessType) newErrors.businessType = "Please select your business type";
-    
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+
     if (validateForm()) {
       setIsSubmitting(true);
-      
+
       // Construct WhatsApp Message
       // "Hi, I want a website demo for my [business type]. My name is [name]."
       let waText = `Hi, I want a website demo for my ${formData.businessType}. My name is ${formData.name}.`;
-      
+
       if (formData.message.trim()) {
         waText += `\n\nAdditional details: ${formData.message}`;
       }
-      
+
       const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(waText)}`;
-      
+
       if (onSuccess) {
         onSuccess();
       }
@@ -120,7 +120,7 @@ export function LeadForm({ className = "", onSuccess }) {
             name="phone"
             value={formData.phone}
             onChange={handleChange}
-            placeholder="+1 (555) 000-0000"
+            placeholder="+91 8475 - XXXXXX"
             className={`${inputClasses} ${errors.phone ? 'border-red-500 focus:border-red-500 focus:ring-red-500/20' : ''}`}
             aria-invalid={errors.phone ? 'true' : 'false'}
             aria-describedby={errors.phone ? "phone-error" : undefined}
@@ -186,9 +186,9 @@ export function LeadForm({ className = "", onSuccess }) {
       </div>
 
       {/* Submit Button */}
-      <Button 
-        type="submit" 
-        size="lg" 
+      <Button
+        type="submit"
+        size="lg"
         className="w-full mt-2 py-4 rounded-xl shadow-lg hover:shadow-indigo-500/25 group transition-all"
         disabled={isSubmitting}
       >
@@ -196,7 +196,7 @@ export function LeadForm({ className = "", onSuccess }) {
         {isSubmitting ? 'Connecting...' : 'Get Free Website Demo'}
         {!isSubmitting && <ArrowRight className="ml-2 w-5 h-5 border-l border-white/20 pl-2 opacity-80 group-hover:translate-x-1 group-hover:opacity-100 transition-all" />}
       </Button>
-      
+
       <p className="text-xs text-center text-gray-500 dark:text-gray-400 mt-2">
         By clicking, you will be redirected to WhatsApp to complete your request.
       </p>

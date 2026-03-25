@@ -15,18 +15,18 @@ export function CTA() {
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Button 
-              size="lg" 
-              className="w-full sm:w-auto px-10 py-5 text-lg font-bold rounded-2xl bg-white text-indigo-600 hover:bg-indigo-50 border-0 shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all" 
+            <Button
+              size="lg"
+              className="w-full sm:w-auto px-10 py-5 text-lg font-bold rounded-2xl bg-white text-indigo-600 hover:bg-indigo-50 border-0 shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all"
               aria-label="Get Free Demo"
               onClick={() => window.dispatchEvent(new CustomEvent('open-demo-modal'))}
             >
               Get Free Demo
               <ArrowRight className="ml-2 w-6 h-6 shrink-0" aria-hidden="true" />
             </Button>
-            <a 
-              href="https://wa.me/1234567890" 
-              target="_blank" 
+            <a
+              href="https://wa.me/8923101766"
+              target="_blank"
               rel="noopener noreferrer"
               className="w-full sm:w-auto"
             >

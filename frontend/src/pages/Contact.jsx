@@ -15,7 +15,7 @@ export default function Contact() {
             <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-400 mb-12 leading-relaxed">
               Ready to stop losing customers to competitors? Fill out the form to get a free, custom website demo tailored specifically to your business within 24 hours.
             </p>
-            
+
             <div className="space-y-8">
               <div className="flex items-center gap-5">
                 <div className="w-14 h-14 rounded-2xl bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 shadow-sm flex items-center justify-center text-indigo-600 dark:text-indigo-400">
@@ -23,17 +23,17 @@ export default function Contact() {
                 </div>
                 <div>
                   <h3 className="text-lg font-bold text-gray-900 dark:text-white">WhatsApp / Call</h3>
-                  <p className="text-gray-600 dark:text-gray-400 font-medium mt-1">+1 (234) 567-890</p>
+                  <p className="text-gray-600 dark:text-gray-400 font-medium mt-1">+91 8923101766</p>
                 </div>
               </div>
-              
+
               <div className="flex items-center gap-5">
                 <div className="w-14 h-14 rounded-2xl bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 shadow-sm flex items-center justify-center text-indigo-600 dark:text-indigo-400">
                   <Mail className="w-6 h-6" aria-hidden="true" />
                 </div>
                 <div>
                   <h3 className="text-lg font-bold text-gray-900 dark:text-white">Email</h3>
-                  <p className="text-gray-600 dark:text-gray-400 font-medium mt-1">hello@agency.com</p>
+                  <p className="text-gray-600 dark:text-gray-400 font-medium mt-1">gaurakash014@gmail.com</p>
                 </div>
               </div>
 
@@ -43,7 +43,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <h3 className="text-lg font-bold text-gray-900 dark:text-white">Location</h3>
-                  <p className="text-gray-600 dark:text-gray-400 font-medium mt-1">123 Growth Ave, Tech District</p>
+                  <p className="text-gray-600 dark:text-gray-400 font-medium mt-1">Chhijarsi, Noida, Uttar Pradesh, India</p>
                 </div>
               </div>
             </div>
